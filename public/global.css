@@ -1,0 +1,26 @@
+body{
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	text-align: center;
+}
+
+.card{
+	width: 300px;
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.playerZone{
+	width: 50%;
+	margin: 4px;
+	padding : 7px;
+	border: solid black 1px;
+}
+
+.buttons{
+	margin-top: 25px;
+}
