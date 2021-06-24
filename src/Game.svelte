@@ -3,20 +3,24 @@
   export let playerOneName;
   export let playerTwoName;
 
-  let cardPackage = new Array();
-  let playerOnePackage = new Array();
-  let playerTwoPackage = new Array();
-  let message = "Waiting to start";
-
-  /**
+   /**
    * Card class with value and color
    */
-  class card {
+  class Card {
     constructor(value, color) {
       this.value = value;
       this.color = color;
     }
   }
+
+  let cardPackage = new Array();
+  let playerOnePackage = new Array();
+  let playerTwoPackage = new Array();
+  let currentPlayerOneCard = new Card();
+  let currentPlayerTwoCard = new Card();
+  let message = "Waiting to start";
+
+ 
 
   /**
    * Initialization sequence of the game
@@ -75,7 +79,7 @@
     }
     for (let i = 0; i < colors.length; i++) {
       for (let j = 0; j < values.length; j++) {
-        let currentCard = new card(colors[i], values[j]);
+        let currentCard = new Card(colors[i], values[j]);
         array.push(currentCard);
       }
     }
