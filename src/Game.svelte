@@ -1,11 +1,11 @@
 <script>
   export let cardPackageLength;
+  export let playerOneName;
+  export let playerTwoName;
 
   let cardPackage = new Array();
   let playerOnePackage = new Array();
   let playerTwoPackage = new Array();
-  let playerOneName = "Player 1";
-  let playerTwoName = "Player 2";
   let message = "Waiting to start";
 
   /**
@@ -26,7 +26,7 @@
       fillPackage(cardPackage);
       shufflePackage(cardPackage);
       splitPackage(cardPackage, playerOnePackage, playerTwoPackage);
-	  updateDOM()
+      updateDOM();
       message = "Game Start";
     } else {
       message = "Game already start";
