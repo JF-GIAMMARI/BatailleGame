@@ -22,11 +22,15 @@
    * Initialization sequence of the game
    */
   function Start() {
-    fillPackage(cardPackage);
-    shufflePackage(cardPackage);
-    splitPackage(cardPackage, playerOnePackage, playerTwoPackage);
-    console.log(playerOnePackage, playerTwoPackage);
-    message = "Game Start";
+    if (cardPackage.length == 0) {
+      fillPackage(cardPackage);
+      shufflePackage(cardPackage);
+      splitPackage(cardPackage, playerOnePackage, playerTwoPackage);
+	  updateDOM()
+      message = "Game Start";
+    } else {
+      message = "Game already start";
+    }
   }
 
   /**
@@ -41,11 +45,23 @@
     } else {
       message = "Equality !";
     }
+    playerOnePackage = [];
+    playerTwoPackage = [];
+    cardPackage = [];
+    message = "Waiting to start";
   }
 
   function NextTurn() {}
 
   // UTILITIES FUNCTION
+
+  /**
+   * Self-Assign global array for update SvelteJS DOM
+   */
+  function updateDOM() {
+    playerOnePackage = playerOnePackage;
+    playerTwoPackage = playerTwoPackage;
+  }
 
   /**
    * Fill the package with card according to the start configuration
@@ -73,7 +89,7 @@
     array.sort(() => Math.random() - 0.5);
   }
 
-   /**
+  /**
    * Divide a package into two equal packages (Deep Copy)
    * @param {array} array The original package
    * @param {array} firtTarget The first part new package
@@ -81,13 +97,13 @@
    */
   function splitPackage(array, firstTarget, secondTarget) {
     for (let i = 0; i < array.length; i++) {
-		const element = array[i];
-		if(i < array.length/2){
-			firstTarget.push(element)
-		}else{
-			secondTarget.push(element)
-		}
-	}
+      const element = array[i];
+      if (i < array.length / 2) {
+        firstTarget.push(element);
+      } else {
+        secondTarget.push(element);
+      }
+    }
   }
 
   /**
