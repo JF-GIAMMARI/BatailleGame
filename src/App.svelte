@@ -1,6 +1,6 @@
 <script>
 	import Game from './Game.svelte';
-	let cardPackageLength = 32
+	let cardPackageLength = 52
 
 </script>
 
