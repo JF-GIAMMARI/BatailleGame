@@ -26,11 +26,29 @@ body {
   height: 100px;
   margin: 10%;
   display: flex;
+  padding-top: 10px;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
-
   border: solid black 1px;
+  border-radius: 10px;
+  background-size: 30px;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.hearts {
+  background-image: url("https://cdn.pixabay.com/photo/2012/04/13/20/38/hearts-33564_960_720.png");
+}
+
+.tiles {
+  background-image: url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTR2_Rsn1h_FAZWBZuOeSOP1z8F4B4T_hYIeg&usqp=CAU");
+}
+
+.clovers {
+  background-image: url("https://image.freepik.com/vecteurs-libre/trefle-carte_17-822071752.jpg");
+}
+.pikes {
+  background-image: url("https://cdn.icon-icons.com/icons2/909/PNG/512/spades_icon-icons.com_70867.png");
 }
 
 .buttons {

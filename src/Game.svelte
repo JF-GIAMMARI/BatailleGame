@@ -349,10 +349,8 @@
         .color}"
     >
       {#if currentPlayerOneCards.length % 2 === 0}
-        Hidden card
+        X
       {:else}
-        {currentPlayerOneCards[currentPlayerOneCards.length - 1].color}
-        <br />
         {currentPlayerOneCards[currentPlayerOneCards.length - 1].name}
       {/if}
     </div>
@@ -365,8 +363,6 @@
       {#if currentPlayerTwoCards.length % 2 === 0}
         Hidden card
       {:else}
-        {currentPlayerTwoCards[currentPlayerTwoCards.length - 1].color}
-        <br />
         {currentPlayerTwoCards[currentPlayerTwoCards.length - 1].name}
       {/if}
     </div>
