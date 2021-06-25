@@ -1,3 +1,6 @@
+/**
+ * Card class with power value, color and name
+ */
 class Card {
 	constructor(value, color, name) {
 		this.value = value;
@@ -98,7 +101,6 @@ function presentCards(
 	}
 }
 
-
 /**
  * Fill the package with card according to the start configuration
  * @param {array} array The array to fill
@@ -140,20 +142,4 @@ function fillPackage(array, length) {
 	}
 }
 
-
-/**
- * Give all played cards to a package
- * @param {array} targetPackage The package
- */
-function giveCards(targetPackage) {
-	currentPlayerOneCards.forEach((element) => {
-		targetPackage.push(element);
-	});
-	currentPlayerTwoCards.forEach((element) => {
-		targetPackage.push(element);
-	});
-	currentPlayerOneCards = new Array();
-	currentPlayerTwoCards = new Array();
-}
-
-export { Card, splitPackage, shufflePackage, presentCards, compareCard, comparePackage, giveCards, fillPackage }
+export { Card, splitPackage, shufflePackage, presentCards, compareCard, comparePackage, fillPackage }

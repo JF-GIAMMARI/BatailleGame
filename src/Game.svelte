@@ -1,26 +1,36 @@
 <script>
-  import {Card, fillPackage, splitPackage,shufflePackage,presentCards,compareCard,comparePackage,giveCards} from './tools.js'
+  import {
+    Card,
+    fillPackage,
+    splitPackage,
+    shufflePackage,
+    presentCards,
+    compareCard,
+    comparePackage,
+  } from "./tools.js";
+
   export let cardPackageLength;
   export let playerOneName;
   export let playerTwoName;
 
+  // Packages
   let cardPackage = new Array();
   let playerOnePackage = new Array();
   let playerTwoPackage = new Array();
+
+  //Waiting zone for cards
   let currentPlayerOneCards = new Array();
   let currentPlayerTwoCards = new Array();
+
+  //Messages
   let message = "Waiting to start";
   let finalMessage = "";
 
+  //Utilities
   let turnCount = 0;
   let isStarted = false;
   let isPlaced = false;
   let isAutoPlay = undefined;
-
-  /**
-   * Card class with power value, color and name
-   */
-
 
   /**
    * Initialization sequence of the game
@@ -59,12 +69,13 @@
       currentPlayerTwoCards[currentPlayerTwoCards.length - 1]
     );
 
-    let waitingCardsNb = currentPlayerOneCards.length + currentPlayerTwoCards.length
+    let waitingCardsNb =
+      currentPlayerOneCards.length + currentPlayerTwoCards.length;
 
     if (referee == 1) {
       giveCards(playerOnePackage);
       checkPackage();
-      message = playerOneName + " take cards (+"+waitingCardsNb+")";
+      message = playerOneName + " take cards (+" + waitingCardsNb + ")";
     } else if (referee == 0) {
       message = "Bataille";
       presentCards(
@@ -77,7 +88,7 @@
     } else {
       giveCards(playerTwoPackage);
       checkPackage();
-      message = playerTwoName + " takes card (+"+waitingCardsNb+")";
+      message = playerTwoName + " takes card (+" + waitingCardsNb + ")";
     }
     updateDOM();
     isPlaced = false;
@@ -147,6 +158,21 @@
   }
 
   /**
+   * Give all played cards to a package
+   * @param {array} targetPackage The package
+   */
+  function giveCards(targetPackage) {
+    currentPlayerOneCards.forEach((element) => {
+      targetPackage.push(element);
+    });
+    currentPlayerTwoCards.forEach((element) => {
+      targetPackage.push(element);
+    });
+    currentPlayerOneCards = new Array();
+    currentPlayerTwoCards = new Array();
+  }
+
+  /**
    * Check if all player can continue to play according to the number of cards
    */
   function checkPackage() {
@@ -187,27 +213,21 @@
 
 <div class="card">
   {#if currentPlayerOneCards[currentPlayerOneCards.length - 1] != undefined}
-    <div
-      class="cardZone {currentPlayerOneCards[currentPlayerOneCards.length - 1]
-        .color}"
-    >
-      {#if currentPlayerOneCards.length % 2 === 0}
-        X
-      {:else}
+    {#if currentPlayerOneCards.length % 2 === 0 && currentPlayerOneCards.length != 0}
+      <div class="cardZone flip" />
+    {:else}
+      <div class="cardZone {currentPlayerOneCards[currentPlayerOneCards.length - 1].color}">
         {currentPlayerOneCards[currentPlayerOneCards.length - 1].name}
-      {/if}
-    </div>
+      </div>
+    {/if}
   {/if}
   {#if currentPlayerTwoCards[currentPlayerTwoCards.length - 1] != undefined}
-    <div
-      class="cardZone {currentPlayerTwoCards[currentPlayerTwoCards.length - 1]
-        .color}"
-    >
-      {#if currentPlayerTwoCards.length % 2 === 0}
-        Hidden card
-      {:else}
+    {#if currentPlayerTwoCards.length % 2 === 0 && currentPlayerTwoCards.length != 0}
+      <div class="cardZone flip" />
+    {:else}
+      <div class="cardZone {currentPlayerTwoCards[currentPlayerTwoCards.length - 1].color}">
         {currentPlayerTwoCards[currentPlayerTwoCards.length - 1].name}
-      {/if}
-    </div>
+      </div>
+    {/if}
   {/if}
 </div>
